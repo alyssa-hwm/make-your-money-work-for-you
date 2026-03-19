@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Make Your Money Work For You</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #faf6f0;
+  --warm-white: #fffdf9;
+  --parchment: #f2ebe0;
+  --sand: #e8ddd0;
+  --terracotta: #c97d5a;
+  --terracotta-light: #e8a882;
+  --forest: #3d6b4f;
+  --forest-light: #5a8f6c;
+  --forest-pale: #d4e8db;
+  --sage: #8fb99a;
+  --gold: #c9a84c;
+  --gold-light: #f0d080;
+  --ink: #2a2118;
+  --ink-mid: #6b5c4e;
+  --ink-soft: #9c8878;
+  --ink-faint: #c4b9af;
+  --shadow-warm: rgba(42,33,24,0.08);
+  --shadow-warm-md: rgba(42,33,24,0.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--ink);
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,125,90,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 80%, rgba(61,107,79,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 60% 40%, rgba(201,168,76,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 2.5rem 0 2rem;
+}
+
+.plant-wrap {
+  margin: 0 auto 1.25rem;
+  width: 80px;
+  height: 88px;
+  display: block;
+  filter: drop-shadow(0 8px 16px rgba(61,107,79,0.2));
+}
+
+.plant-stem {
+  transform-origin: 50% 100%;
+  animation: sway 4s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+.hero-eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--terracotta);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+  opacity: 0.9;
+}
+
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.2rem, 7vw, 3rem);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+}
+
+.hero-title em { font-style: italic; color: var(--forest); }
+
+.hero-sub {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--ink-mid);
+  line-height: 1.55;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 1.75rem 0 0.75rem;
+}
+
+.section-label-line { flex: 1; height: 1px; background: var(--sand); }
+
+.section-label-text {
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--terracotta);
+  white-space: nowrap;
+}
+
+.card {
+  background: var(--warm-white);
+  border-radius: 18px;
+  padding: 1.35rem 1.5rem;
+  margin-bottom: 0.85rem;
+  border: 1.5px solid var(--sand);
+  box-shadow: 0 2px 16px var(--shadow-warm);
+  transition: box-shadow 0.2s;
+  animation: fadeSlideIn 0.4s ease both;
+}
+
+.card:focus-within { box-shadow: 0 4px 24px var(--shadow-warm-md); }
+
+.card-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.micro {
+  font-size: 0.73rem;
+  color: var(--ink-faint);
+  margin-top: 0.45rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+input[type="number"], input[type="text"], select {
+  width: 100%;
+  background: var(--parchment);
+  border: 1.5px solid var(--sand);
+  border-radius: 12px;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 11px 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  -webkit-appearance: none;
+}
+
+input[type="number"]::placeholder, input[type="text"]::placeholder { color: var(--ink-faint); font-weight: 400; }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px var(--parchment) inset;
+  -webkit-text-fill-color: var(--ink);
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input[type="number"]:focus, input[type="text"]:focus, select:focus {
+  border-color: var(--forest);
+  background: var(--warm-white);
+  box-shadow: 0 0 0 3px rgba(61,107,79,0.1);
+}
+
+select option { background: #fff; color: var(--ink); }
+.row { display: flex; gap: 10px; }
+
+.rate-pill {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--forest), var(--sage));
+  color: #fff;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  padding: 3px 18px;
+  border-radius: 99px;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.01em;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--forest) 0%, var(--forest-pale) 100%);
+  outline: none;
+  margin: 0.6rem 0;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--warm-white);
+  border: 3px solid var(--forest);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(61,107,79,0.3);
+  transition: transform 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+
+.rate-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--ink-faint);
+  font-weight: 600;
+}
+
+.goal-toggle { display: flex; gap: 8px; }
+
+.goal-btn {
+  flex: 1;
+  padding: 10px 8px;
+  background: var(--parchment);
+  border: 1.5px solid var(--sand);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.goal-btn.active {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: #fff;
+  box-shadow: 0 3px 14px rgba(61,107,79,0.3);
+}
+
+.target-input { display: none; margin-top: 0.75rem; }
+.target-input.vis { display: block; }
+
+.cta-wrap { margin: 1.75rem 0 0; }
+
+.cta {
+  display: block;
+  width: 100%;
+  padding: 17px;
+  background: linear-gradient(135deg, var(--terracotta), #d4956e);
+  border: none;
+  border-radius: 16px;
+  color: #fff;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 6px 28px rgba(201,125,90,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+  pointer-events: none;
+}
+
+.cta:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(201,125,90,0.5); }
+.cta:active { transform: translateY(0); }
+
+.results {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
+
+.results.vis {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  height: auto;
+  overflow: visible;
+}
+
+.results-header {
+  text-align: center;
+  padding: 2.5rem 0 1.5rem;
+  position: relative;
+}
+
+.results-header::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 48px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--sand), transparent);
+}
+
+.results-eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 1rem;
+  color: var(--terracotta);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.results-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.hero-result {
+  background: var(--forest);
+  border-radius: 22px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 8px 32px rgba(61,107,79,0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-result::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 140px; height: 140px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+
+.hero-result::after {
+  content: '';
+  position: absolute;
+  bottom: -30px; left: -30px;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+
+.hero-result-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 0.4rem;
+}
+
+.big-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 3.2rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.hero-result-sub {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 0.4rem;
+  font-weight: 500;
+}
+
+.monthly-needed {
+  background: linear-gradient(135deg, rgba(201,125,90,0.1), rgba(201,125,90,0.05));
+  border: 1.5px solid rgba(201,125,90,0.25);
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem;
+  text-align: center;
+  margin-bottom: 0.85rem;
+}
+
+.monthly-needed .lbl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--terracotta);
+  margin-bottom: 0.2rem;
+}
+
+.monthly-needed .val {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+  color: var(--terracotta);
+}
+
+.monthly-needed .sub { font-size: 0.7rem; color: var(--ink-soft); font-weight: 500; margin-top: 2px; }
+
+.metrics-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.metric {
+  background: var(--warm-white);
+  border: 1.5px solid var(--sand);
+  border-radius: 16px;
+  padding: 1.1rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 12px var(--shadow-warm);
+}
+
+.metric-icon { font-size: 1.2rem; margin-bottom: 0.3rem; display: block; }
+
+.metric-val {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.1;
+}
+
+.metric-lbl {
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-top: 3px;
+}
+
+.chart-card {
+  background: var(--warm-white);
+  border: 1.5px solid var(--sand);
+  border-radius: 18px;
+  padding: 1.35rem 1.4rem 1.1rem;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 2px 16px var(--shadow-warm);
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.chart-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.chart-legend {
+  display: flex;
+  gap: 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.chart-wrap { position: relative; height: 220px; width: 100%; }
+
+.banner {
+  background: linear-gradient(135deg, var(--parchment), #f5ede1);
+  border: 1.5px solid var(--sand);
+  border-radius: 18px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 0.85rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner::before {
+  content: '❝';
+  position: absolute;
+  top: -4px; left: 14px;
+  font-size: 3rem;
+  color: var(--sand);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+.banner-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.15rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.45;
+  margin-bottom: 0.4rem;
+}
+
+.banner-sub { font-size: 0.8rem; color: var(--ink-mid); font-weight: 500; }
+
+.reset {
+  display: none;
+  width: 100%;
+  background: transparent;
+  border: 1.5px solid var(--sand);
+  border-radius: 12px;
+  color: var(--ink-soft);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.results.vis #resetBtn { display: block; }
+.reset:hover { background: var(--warm-white); color: var(--terracotta); border-color: var(--terracotta-light); }
+
+.chart-insight {
+  font-size: 0.78rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+  margin-bottom: 0.85rem;
+  padding: 0.65rem 0.85rem;
+  background: var(--parchment);
+  border-radius: 10px;
+  border-left: 3px solid var(--sage);
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.count-anim { animation: countUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+
+/* Amortisation table */
+.amort-table-card {
+  background: var(--warm-white);
+  border: 1.5px solid var(--sand);
+  border-radius: 18px;
+  padding: 1.35rem 1.4rem 0.5rem;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 2px 16px var(--shadow-warm);
+}
+
+.amort-table-header { margin-bottom: 1rem; }
+
+.amort-table-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.amort-table-sub {
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+.amort-table-wrap {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1.5px solid var(--sand);
+  margin-bottom: 0.85rem;
+}
+
+.amort-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.amort-table thead tr { background: var(--parchment); }
+
+.amort-table th {
+  padding: 9px 12px;
+  text-align: right;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.amort-table th:first-child { text-align: center; }
+
+.amort-table td {
+  padding: 9px 12px;
+  text-align: right;
+  color: var(--ink-mid);
+  font-weight: 500;
+  border-top: 1px solid var(--sand);
+  white-space: nowrap;
+}
+
+.amort-table td:first-child {
+  text-align: center;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.amort-table tbody tr td { background: var(--warm-white); }
+.amort-table tbody tr:last-child td {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.amort-table .interest-cell { color: var(--forest); font-weight: 600; }
+.amort-table tbody tr:last-child .interest-cell { color: var(--forest); }
+
+/* Currency selector — fixed top-right */
+.currency-select-outer {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--warm-white);
+  border: 1.5px solid var(--sand);
+  border-radius: 99px;
+  padding: 6px 12px 6px 9px;
+  box-shadow: 0 2px 12px var(--shadow-warm-md);
+  transition: box-shadow 0.2s;
+}
+
+.currency-select-outer:hover {
+  box-shadow: 0 4px 18px var(--shadow-warm-md);
+}
+
+.currency-select-outer .currency-flag {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.currency-select-outer select {
+  width: auto;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  max-width: 80px;
+}
+
+.currency-select-outer select:focus {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+/* On mobile, tuck it in a touch more */
+@media (max-width: 480px) {
+  .currency-select-outer {
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px 5px 8px;
+    gap: 5px;
+  }
+  .currency-select-outer .currency-flag { font-size: 0.95rem; }
+  .currency-select-outer select { font-size: 0.75rem; max-width: 68px; }
+}
+
+
+.chart-card-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.chart-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chart-html-legend {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.chl-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.chl-circle {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.chl-dash {
+  display: inline-block;
+  width: 16px;
+  height: 0;
+  border-top: 2px dashed rgba(42,33,24,0.85);
+  flex-shrink: 0;
+}
+
+
+.compound-insight {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  padding: 0.75rem 1rem;
+  background: rgba(90,143,108,0.08);
+  border-left: 3px solid rgba(90,143,108,0.6);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+  line-height: 1.55;
+}
+
+.compound-insight em {
+  font-style: italic;
+  color: var(--terracotta);
+  font-weight: 600;
+}
+
+.compound-insight-icon {
+  color: rgba(90,143,108,0.9);
+  margin-right: 4px;
+  font-size: 0.7rem;
+  vertical-align: middle;
+}
+
+/* Input error state */
+.input-error {
+  border-color: var(--terracotta) !important;
+  background: rgba(201,125,90,0.06) !important;
+  box-shadow: 0 0 0 3px rgba(201,125,90,0.15) !important;
+  animation: shake 0.35s ease;
+}
+
+.error-msg {
+  font-size: 0.72rem;
+  color: var(--terracotta);
+  font-weight: 600;
+  margin-top: 0.4rem;
+  display: none;
+}
+
+.error-msg.vis { display: block; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<div class="currency-select-outer">
+  <span class="currency-flag" id="currencyFlag">🇺🇸</span>
+  <select id="currencySelect" onchange="setCurrency(this.value)">
+    <optgroup label="Popular">
+      <option value="USD">USD — $</option>
+      <option value="EUR">EUR — €</option>
+      <option value="GBP">GBP — £</option>
+      <option value="AUD">AUD — A$</option>
+      <option value="CAD">CAD — C$</option>
+    </optgroup>
+    <optgroup label="Other">
+      <option value="JPY">JPY — ¥</option>
+      <option value="CNY">CNY — ¥</option>
+      <option value="SGD">SGD — S$</option>
+      <option value="INR">INR — ₹</option>
+      <option value="HKD">HKD — HK$</option>
+      <option value="PHP">PHP — ₱</option>
+    </optgroup>
+  </select>
+</div>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="plant-wrap">
+      <svg width="80" height="88" viewBox="0 0 72 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g class="plant-stem">
+          <path d="M36 72 Q36 52 36 38" stroke="#8fb99a" stroke-width="4" stroke-linecap="round"/>
+          <path d="M36 55 Q22 48 18 36 Q28 36 36 48" fill="#3d6b4f"/>
+          <path d="M36 48 Q50 40 54 28 Q44 30 36 42" fill="#5a8f6c"/>
+          <path d="M36 40 Q28 28 30 16 Q38 22 36 36" fill="#3d6b4f"/>
+          <circle cx="36" cy="14" r="7" fill="#d4e8db"/>
+          <circle cx="36" cy="11" r="4" fill="#8fb99a"/>
+          <ellipse cx="36" cy="74" rx="16" ry="5" fill="#c8a97e" opacity="0.6"/>
+          <rect x="24" y="72" width="24" height="8" rx="4" fill="#b89060" opacity="0.75"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-eyebrow">savings calculator by @her.wealthmindset</div>
+    <div class="hero-title">Make your money<br><em>work for you</em></div>
+    <div class="hero-sub">Small, consistent habits today build the life you want tomorrow.</div>
+  </div>
+
+  <div class="section-label">
+    <div class="section-label-line"></div>
+    <div class="section-label-text">Tell me about your plan</div>
+    <div class="section-label-line"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">🎯 What's your goal?</div>
+    <div class="goal-toggle">
+      <div class="goal-btn active" id="btnMax" onclick="setGoal('max')">Grow my savings</div>
+      <div class="goal-btn" id="btnTarget" onclick="setGoal('target')">Hit a target</div>
+    </div>
+    <div class="target-input" id="targetWrap">
+      <input type="text" inputmode="numeric" id="targetAmount" placeholder="e.g. $50,000" style="margin-top:0.5rem">
+      <div class="error-msg" id="targetError">⚠ Please enter a target amount.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">⏳ What's your timeframe?</div>
+    <div class="row">
+      <input type="number" id="timeValue" value="5" min="1" step="1" placeholder="5" style="max-width:90px">
+      <select id="timeUnit">
+        <option value="years">years</option>
+        <option value="months">months</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">💰 How much have you already saved?</div>
+    <input type="text" inputmode="numeric" id="startDeposit" placeholder="e.g. $5,000">
+    <div class="micro">It's okay if you haven't started yet! We all start somewhere.</div>
+  </div>
+
+  <div class="card" id="monthlyCard">
+    <div class="card-label">📅 How much can you save per month?</div>
+    <input type="text" inputmode="numeric" id="monthlyContrib" placeholder="e.g. $100">
+    <div class="error-msg" id="monthlyError">⚠ Please enter a monthly savings amount.</div>
+    <div class="micro">A little goes a long way. Consistency over intensity.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">📈 Expected annual return — <span id="rateDisplay">5%</span></div>
+    <div style="text-align:center"><span class="rate-pill" id="ratePill">5%</span></div>
+    <input type="range" id="rateSlider" min="0" max="10" step="0.1" value="5">
+    <div class="rate-labels"><span>0%</span><span>10%</span></div>
+    <div class="micro">High-yield savings hover ~4–5%. Index funds average ~7% long-term.</div>
+  </div>
+
+  <div class="cta-wrap">
+    <button class="cta" id="calcBtn">✦ Show me my future</button>
+  </div>
+
+  <div class="results" id="results">
+
+    <div class="results-header">
+      <div class="results-eyebrow">Here's what's possible ✦</div>
+      <div class="results-heading">Your savings projection</div>
+    </div>
+
+    <div class="hero-result">
+      <div class="hero-result-label">You could have</div>
+      <div class="big-num" id="bigNum">$0</div>
+      <div class="hero-result-sub" id="timeLabel"></div>
+    </div>
+
+    <div id="monthlyNeededWrap" style="display:none">
+      <div class="monthly-needed">
+        <div class="lbl">Monthly contribution needed</div>
+        <div class="val" id="monthlyNeededVal">$0</div>
+        <div class="sub">to reach your goal</div>
+      </div>
+    </div>
+
+    <div class="metrics-strip">
+      <div class="metric">
+        <span class="metric-icon">💵</span>
+        <div class="metric-val" id="mContrib">$0</div>
+        <div class="metric-lbl">You put in</div>
+      </div>
+      <div class="metric">
+        <span class="metric-icon">🌱</span>
+        <div class="metric-val" id="mInterest">$0</div>
+        <div class="metric-lbl">Interest earned</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-header-row">
+        <div class="chart-card-title">Growth over time</div>
+        <div class="chart-html-legend">
+          <span class="chl-item">
+            <span class="chl-circle" style="background:#3d6b4f"></span>BALANCE
+          </span>
+          <span class="chl-item">
+            <span class="chl-dash"></span>CONTRIBUTIONS
+          </span>
+        </div>
+      </div>
+      <div class="chart-wrap" style="height:260px; position:relative;">
+        <canvas id="amortChart"></canvas>
+      </div>
+      <div class="compound-insight">
+        <span class="compound-insight-icon">✦</span>
+        See the dark green shade? That's your money working for you just by saving.
+      </div>
+    </div>
+
+    <div class="amort-table-card">
+      <div class="amort-table-header">
+        <div class="amort-table-title">Year-by-year breakdown</div>
+        <div class="amort-table-sub">How your savings grow each year</div>
+      </div>
+      <div class="amort-table-wrap">
+        <table class="amort-table" id="amortTable">
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Deposited</th>
+              <th>Interest</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody id="amortTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+      <div class="banner">
+        <div class="banner-text" id="bannerText">The time will pass anyway.</div>
+        <div class="banner-sub" id="bannerSub">Future you will be so glad you started. 💛</div>
+      </div>
+
+    <button class="reset" id="resetBtn">↩ Start over</button>
+
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+// ── Currency data ──
+const CURRENCIES = {
+  USD: { symbol: '$',   flag: '🇺🇸', decimals: 0, placeholders: { deposit: '10,000', monthly: '500',  target: '50,000' } },
+  EUR: { symbol: '€',   flag: '🇪🇺', decimals: 0, placeholders: { deposit: '10,000', monthly: '500',  target: '50,000' } },
+  GBP: { symbol: '£',   flag: '🇬🇧', decimals: 0, placeholders: { deposit: '10,000', monthly: '400',  target: '50,000' } },
+  AUD: { symbol: 'A$',  flag: '🇦🇺', decimals: 0, placeholders: { deposit: '10,000', monthly: '500',  target: '50,000' } },
+  CAD: { symbol: 'C$',  flag: '🇨🇦', decimals: 0, placeholders: { deposit: '10,000', monthly: '500',  target: '50,000' } },
+  JPY: { symbol: '¥',   flag: '🇯🇵', decimals: 0, placeholders: { deposit: '1,000,000', monthly: '50,000', target: '5,000,000' } },
+  CNY: { symbol: '¥',   flag: '🇨🇳', decimals: 0, placeholders: { deposit: '70,000', monthly: '3,500', target: '350,000' } },
+  SGD: { symbol: 'S$',  flag: '🇸🇬', decimals: 0, placeholders: { deposit: '15,000', monthly: '700',  target: '70,000' } },
+  INR: { symbol: '₹',   flag: '🇮🇳', decimals: 0, placeholders: { deposit: '800,000', monthly: '40,000', target: '4,000,000' } },
+  HKD: { symbol: 'HK$', flag: '🇭🇰', decimals: 0, placeholders: { deposit: '80,000', monthly: '4,000', target: '400,000' } },
+  PHP: { symbol: '₱',   flag: '🇵🇭', decimals: 0, placeholders: { deposit: '500,000', monthly: '25,000', target: '2,500,000' } },
+};
+
+let activeCurrency = CURRENCIES['USD'];
+
+function setCurrency(code) {
+  activeCurrency = CURRENCIES[code];
+  document.getElementById('currencyFlag').textContent = activeCurrency.flag;
+  // Update placeholders
+  document.getElementById('startDeposit').placeholder  = `e.g. ${activeCurrency.symbol}${activeCurrency.placeholders.deposit}`;
+  document.getElementById('monthlyContrib').placeholder = `e.g. ${activeCurrency.symbol}${activeCurrency.placeholders.monthly}`;
+  document.getElementById('targetAmount').placeholder   = `e.g. ${activeCurrency.symbol}${activeCurrency.placeholders.target}`;
+}
+
+// ── Comma formatting ──
+function formatWithCommas(value) {
+  const digits = value.replace(/[^0-9]/g, '');
+  return digits === '' ? '' : parseInt(digits, 10).toLocaleString();
+}
+
+function parseInput(id) {
+  const raw = document.getElementById(id).value.replace(/[^0-9.]/g, '');
+  return parseFloat(raw) || 0;
+}
+
+function attachCommaFormat(id) {
+  const el = document.getElementById(id);
+  el.addEventListener('input', function () {
+    const pos = this.selectionStart;
+    const prevLen = this.value.length;
+    this.value = formatWithCommas(this.value);
+    const diff = this.value.length - prevLen;
+    this.setSelectionRange(pos + diff, pos + diff);
+  });
+}
+
+['startDeposit', 'monthlyContrib', 'targetAmount'].forEach(attachCommaFormat);
+
+// ── Format a number with active currency ──
+function fmt(n) {
+  const val = Math.round(Math.max(0, n));
+  return activeCurrency.symbol + val.toLocaleString();
+}
+
+// ── Animate a number counting up ──
+function animateNum(el, target) {
+  const dur = 900, start = Date.now();
+  el.classList.remove('count-anim');
+  void el.offsetWidth;
+  el.classList.add('count-anim');
+  (function tick() {
+    const p = Math.min(1, (Date.now() - start) / dur);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = activeCurrency.symbol + Math.round(target * ease).toLocaleString();
+    if (p < 1) requestAnimationFrame(tick);
+  })();
+}
+
+const quotes = [
+  { t: "The best time to start was yesterday,", s: "the second best? right now." },
+  { t: "Consistency beats intensity", s: "EVERY 👏🏼 SINGLE 👏🏼 TIME 👏🏼" },
+  { t: "You're already ahead", s: "Most people never start, but you're here right now." },
+  { t: "You're building something real", s: "even if it feels invisible." },
+  { t: "The day you plant the seed,", s: "is not the day you eat the fruit. Be patient." },
+  { t: "Your future is worth building,", s: "even if it takes one month at a time." },
+  { t: "The time will pass anyway", s: "so why not start now and see where it takes you?"}
+];
+
+let goalMode = 'max', chartInst = null;
+
+function setGoal(mode) {
+  goalMode = mode;
+  document.getElementById('btnMax').classList.toggle('active', mode === 'max');
+  document.getElementById('btnTarget').classList.toggle('active', mode === 'target');
+  document.getElementById('targetWrap').classList.toggle('vis', mode === 'target');
+  document.getElementById('monthlyCard').style.display = mode === 'max' ? 'block' : 'none';
+}
+
+document.getElementById('rateSlider').addEventListener('input', function () {
+  const v = parseFloat(this.value).toFixed(1).replace(/\.0$/, '') + '%';
+  document.getElementById('rateDisplay').textContent = v;
+  document.getElementById('ratePill').textContent = v;
+});
+
+document.getElementById('calcBtn').addEventListener('click', calc);
+document.getElementById('resetBtn').addEventListener('click', () => {
+  document.getElementById('results').classList.remove('vis');
+  if (chartInst) { chartInst.destroy(); chartInst = null; }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+function clearError(inputId, errorId) {
+  document.getElementById(inputId).classList.remove('input-error');
+  document.getElementById(errorId).classList.remove('vis');
+}
+
+function showError(inputId, errorId) {
+  const el = document.getElementById(inputId);
+  const err = document.getElementById(errorId);
+  el.classList.add('input-error');
+  err.classList.add('vis');
+  // Auto-clear error on next input
+  el.addEventListener('input', () => clearError(inputId, errorId), { once: true });
+}
+
+function calc() {
+  // Clear previous errors
+  clearError('monthlyContrib', 'monthlyError');
+  clearError('targetAmount', 'targetError');
+
+  // Validate required fields based on mode
+  let hasError = false;
+  if (goalMode === 'max' && parseInput('monthlyContrib') === 0) {
+    showError('monthlyContrib', 'monthlyError');
+    hasError = true;
+  }
+  if (goalMode === 'target' && parseInput('targetAmount') === 0) {
+    showError('targetAmount', 'targetError');
+    hasError = true;
+  }
+  if (hasError) {
+    // Scroll to first error
+    document.querySelector('.input-error').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const P = parseInput('startDeposit');
+  const r = parseFloat(document.getElementById('rateSlider').value) / 100 / 12;
+  const tv = parseFloat(document.getElementById('timeValue').value) || 5;
+  const n = document.getElementById('timeUnit').value === 'years' ? tv * 12 : tv;
+
+  let monthlyPmt = parseInput('monthlyContrib');
+  let finalBalance, totalContribs, interestEarned, computedMonthly = null;
+
+  if (goalMode === 'target') {
+    const goal = parseInput('targetAmount') || 10000;
+    if (r === 0) { computedMonthly = Math.max(0, (goal - P) / n); }
+    else {
+      const fvP = P * Math.pow(1 + r, n);
+      const rem = goal - fvP;
+      computedMonthly = rem <= 0 ? 0 : rem * r / (Math.pow(1 + r, n) - 1);
+    }
+    monthlyPmt = computedMonthly;
+    finalBalance = goal;
+    totalContribs = P + monthlyPmt * n;
+    interestEarned = finalBalance - totalContribs;
+  } else {
+    if (r === 0) { finalBalance = P + monthlyPmt * n; }
+    else { finalBalance = P * Math.pow(1 + r, n) + monthlyPmt * (Math.pow(1 + r, n) - 1) / r; }
+    totalContribs = P + monthlyPmt * n;
+    interestEarned = finalBalance - totalContribs;
+  }
+
+  const isYears = document.getElementById('timeUnit').value === 'years';
+
+  animateNum(document.getElementById('bigNum'), finalBalance);
+  animateNum(document.getElementById('mContrib'), Math.max(0, totalContribs));
+  animateNum(document.getElementById('mInterest'), Math.max(0, interestEarned));
+
+  document.getElementById('timeLabel').textContent = 'after ' + tv + ' ' + document.getElementById('timeUnit').value;
+
+  if (computedMonthly !== null) {
+    document.getElementById('monthlyNeededWrap').style.display = 'block';
+    animateNum(document.getElementById('monthlyNeededVal'), computedMonthly);
+  } else {
+    document.getElementById('monthlyNeededWrap').style.display = 'none';
+  }
+
+  const q = quotes[Math.floor(Math.random() * quotes.length)];
+  document.getElementById('bannerText').textContent = q.t;
+  document.getElementById('bannerSub').textContent = q.s;
+
+  if (chartInst) chartInst.destroy();
+
+  const step = n <= 24 ? 1 : n <= 60 ? 3 : n <= 120 ? 6 : 12;
+  const sym = activeCurrency.symbol;
+
+  const xAxis = {
+    grid: { color: 'rgba(42,33,24,0.05)' },
+    ticks: { color: '#9c8878', font: { size: 9, family: 'DM Sans' }, maxRotation: 0 },
+    title: { display: true, text: isYears ? 'Years' : 'Months', color: '#9c8878', font: { size: 10, family: 'DM Sans', weight: '600' }, padding: { top: 6 } }
+  };
+  const yAxis = {
+    grid: { color: 'rgba(42,33,24,0.05)' },
+    ticks: {
+      color: '#9c8878', font: { size: 9, family: 'DM Sans' },
+      callback: v => sym + (v >= 1000 ? Math.round(v / 1000) + 'k' : v)
+    }
+  };
+  const tooltipBase = {
+    backgroundColor: '#faf6f0', titleColor: '#2a2118', bodyColor: '#6b5c4e',
+    borderColor: '#e8ddd0', borderWidth: 1, padding: 10
+  };
+
+  // ── Line chart: balance vs contributions, terracotta fill between ──
+  const lineLabels = [], balData = [], ctbData = [];
+  const lineStep = n <= 24 ? 1 : n <= 60 ? 3 : n <= 120 ? 6 : 12;
+  for (let i = 0; i <= n; i += lineStep) {
+    const bal = r === 0 ? P + monthlyPmt * i : P * Math.pow(1 + r, i) + monthlyPmt * (Math.pow(1 + r, i) - 1) / r;
+    const ctb = P + monthlyPmt * i;
+    lineLabels.push(isYears ? (i % 12 === 0 ? i / 12 : '') : i);
+    balData.push(Math.round(Math.max(0, bal)));
+    ctbData.push(Math.round(Math.max(0, ctb)));
+  }
+
+  const amortCtx = document.getElementById('amortChart').getContext('2d');
+  const amortChart = new Chart(amortCtx, {
+    type: 'line',
+    data: {
+      labels: lineLabels,
+      datasets: [
+        {
+          // Balance — forest green solid line, prominent
+          label: 'Balance',
+          data: balData,
+          borderColor: '#3d6b4f',
+          backgroundColor: 'transparent',
+          fill: false,
+          tension: 0.45,
+          pointRadius: 0,
+          borderWidth: 2.5,
+          order: 1
+        },
+        {
+          // Interest earned — medium sage green fill between balance and contributions
+          label: 'Interest Earned',
+          data: balData,
+          borderColor: 'transparent',
+          backgroundColor: 'rgba(90,143,108,0.22)',
+          fill: '+1',
+          tension: 0.45,
+          pointRadius: 0,
+          borderWidth: 0,
+          order: 2
+        },
+        {
+          // Contributions — solid opaque black dashed line, light sage fill underneath
+          label: 'Contributions',
+          data: ctbData,
+          borderColor: 'rgba(42,33,24,0.85)',
+          backgroundColor: 'rgba(143,185,154,0.13)',
+          fill: true,
+          tension: 0.45,
+          pointRadius: 0,
+          borderWidth: 1.5,
+          borderDash: [5, 4],
+          order: 3
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          ...tooltipBase,
+          callbacks: {
+            label: ctx => {
+              if (ctx.dataset.label === 'Interest Earned') return null;
+              return '  ' + ctx.dataset.label + ': ' + fmt(ctx.raw);
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(42,33,24,0.05)' },
+          ticks: { color: '#9c8878', font: { size: 9, family: 'DM Sans' }, maxRotation: 0 },
+          title: {
+            display: true,
+            text: 'Years',
+            color: '#9c8878',
+            font: { size: 10, family: 'DM Sans', weight: '600' },
+            padding: { top: 6 }
+          }
+        },
+        y: yAxis
+      },
+      animation: { duration: 800 }
+    }
+  });
+
+  chartInst = amortChart;
+
+  // ── Amortisation table ──
+  const tbody = document.getElementById('amortTableBody');
+  tbody.innerHTML = '';
+  const totalYears = Math.ceil(n / 12);
+  for (let y = 1; y <= totalYears; y++) {
+    const clampedMonths = Math.min(y * 12, n);
+    const bal      = r === 0 ? P + monthlyPmt * clampedMonths : P * Math.pow(1+r, clampedMonths) + monthlyPmt * (Math.pow(1+r, clampedMonths) - 1) / r;
+    const ctbSoFar = P + monthlyPmt * clampedMonths;
+    const intSoFar = Math.max(0, bal - ctbSoFar);
+    const deposited = monthlyPmt * Math.min(12, n - (y-1)*12);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${y}</td>
+      <td>${fmt(deposited)}</td>
+      <td class="interest-cell">${fmt(intSoFar)}</td>
+      <td>${fmt(Math.max(0, bal))}</td>`;
+    tbody.appendChild(tr);
+  }
+
+  // Show results
+  const res = document.getElementById('results');
+  res.classList.add('vis');
+  setTimeout(() => res.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
+</script>
+</body>
+</html>
